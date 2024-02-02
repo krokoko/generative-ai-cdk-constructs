@@ -215,6 +215,7 @@ Regarless of the method selected, we will call the application consuming your lo
 
 ```
 .
+|--apidocs/ (auto generated API documentation)
 |--docs/ (draw.io project containing architecture diagrams for all constructs)
 |--lib/ (Build output)
 |--lambda/ (Lambda functions code)
