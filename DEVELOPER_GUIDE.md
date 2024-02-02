@@ -22,6 +22,10 @@
 - [Working on your construct](#working-on-your-construct)
 - [Testing](#testing)
 - [Testing Your Construct Locally](#testing-your-construct-locally)
+    - [Step 1: Building the Generative AI CDK Construct Library](#step-1-building-the-generative-ai-cdk-construct-library)
+    - [Step 2: Packaging the constructs](#step-2-packaging-the-constructs)
+    - [Step 3: Integrating with your application](#step-3-integrating-with-your-application)
+    - [Step 4: Deploying to AWS](#step-4-deploying-to-aws)
 - [Project structure](#project-structure)
 
 ## Introduction
@@ -133,69 +137,68 @@ Projen is opinionated and mandates that all project configuration be done throug
 | `mkdir src/patterns/<generative ai>/<construct name> `                     | Creates a dedicated folder to work on your construct.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | `cd src/patterns/<generative ai>/<construct name>`                         | Change directory to the folder where you want to change code.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | *Do all your code editing*                        | Open your code editor and create the construct or perform your edits on an existing construct. Your construct code must be located in the src folder. Put only the TypeScript files related to your construct in that folder. If you need to bundle additional code, add it to a separate folder in the root folder of this repo (see existing examples, like `lambda` and `resources` folders.) Use an existing construct as an example of the structure that is expected (architecture.png, README.md, index.ts). For the architecture diagram of your construct, please use the provided Draw.io project located in the /docs folder. Create a new tab with your construct name. Finally, export your construct in the src/index.ts file. An example of the expected project structure is provided at the end of this document. Common code containing helper functions to standardize and accelerate development is located in the src/common folder.                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| `npx projen build`                                | This is the build command for the library. It will build, lint, add license header files, and run the unit and integration tests. If you make any substantive changes to the code, you will almost certainly see some or all of the tests fail. The next section will describe how testing works in AWS Generative AI CDK Constructs and how to write, refresh, and execute tests. In the meantime, you can at least check if your code transpiles correctly without running the tests by running `npm run build`. If you've edited any modules in /core in addition to a construct, be sure to build /core before building your construct. This command also packages the constructs locally to the /dist folder. |
+| `npx projen build`                                | This is the build command for the library. It will build, lint, add license header files, and run the unit and integration tests. If you make any substantive changes to the code, you will almost certainly see some or all of the tests fail. The next section will describe how testing works in AWS Generative AI CDK Constructs and how to write, refresh, and execute tests. In the meantime, you can at least check if your code transpiles correctly without running the tests by running `npx projen compile`. |
 
 ## Testing
 
-AWS Generative AI CDK Constructs use two types of testing: unit testing and integration testing. Unit testing targets specific aspects of a construct or one of the functions in the core library. It examines the results and confirms the correct resources are there. For instance, it may call the deployLambdaFunction() in the core library and then confirm that AWS_NODEJS_CONNECTION_REUSE_ENABLED environment variable was set correctly. The unit tests check that certain aspects of the results are correct. You can learn more about unit testing CDK constructs [here](https://docs.aws.amazon.com/cdk/latest/guide/testing.html) and [here](https://aws.amazon.com/blogs/developer/testing-infrastructure-with-the-aws-cloud-development-kit-cdk/).
+AWS Generative AI CDK Constructs uses unit testing. Unit testing targets specific aspects of a construct or one of the functions in the common library. You can learn more about unit testing CDK constructs [here](https://docs.aws.amazon.com/cdk/latest/guide/testing.html) and [here](https://aws.amazon.com/blogs/developer/testing-infrastructure-with-the-aws-cloud-development-kit-cdk/).
 
-All test files can be found in the /test directory under each construct (or core). You'll find two types of files in this directory:
-
-* \*.test.ts files - these are the unit test files. All the unit tests for a construct are in a single file.
-* integ.\*.ts files - these the integration test files. Each integration test gets a separate file.
+All test files can be found in the /test directory under each sub-directory.
 
 
 | Action            | Explanation                                |
 | :------------------ | :------------------------------------------- |
-| `npx projen test` | This will run all tests (unit+integration) |
+| `npx projen test` | This will run all tests (unit) |
 
 ---
 ## Testing Your Construct Locally
 
-- Using the samples repository to test your locally changed constructs. This is also useful for development.
+You can use the samples repository to test your locally changed constructs. This is also useful for development.
 
-### Pre-req:
-- Download the samples repository (The official samples repository https://github.com/aws-samples/generative-ai-cdk-constructs-samples includes a collection of functional use case implementations to demonstrate the usage of AWS Generative AI CDK Constructs. These can be used in the same way as architectural patterns, and can be conceptualized as an additional "higher-level" abstraction of those patterns. Those patterns (constructs) are composed together into [stacks](https://docs.aws.amazon.com/cdk/latest/guide/stacks.html), forming a "CDK app".
-)
+### Step 1: Building the Generative AI CDK Construct library
 
-
-### Step 1: Building the Generative AI CDK Construct
-
-Navigate to the [Generative AI CDK Construct Repository](https://github.com/aws-samples/generative-ai-cdk-constructs-samples):
-    Open your command line interface and change directory to the generative AI CDK construct repository.
-
-- Execute the command ```yarn build```. 
-  - This command runs npx projen build and generates a .jsii file in your repository.
+In your local version of the Generative AI Construct library,  open your command line interface and execute the command ```projen compile```. This command compiles the project in your repository.
 
 ### Step 2: Packaging the Constructs
-1. Run Yarn Package:JS:
-    - Execute ```yarn package:js```.
-      - This command creates a new .tgz package of all constructs in the dist/js folder.
 
-2. Locate the TGZ File:
-    - Find the generated .tgz file, typically named something like dist/js/generative-ai-cdk-constructs-0.0.0.jsii.tgz.
+1. Depending on the bindings you want to use, execute either:
+- ```projen package:js  ```: Create js language bindings
+- ```projen package:python```: Create python language bindings
+
+The command above creates a new .tgz or .whl package of all constructs in the dist/js or dist/python folder.
+
+2. Locate the produced artifact:
+- For js: find the generated .tgz file, typically named ```dist/js/generative-ai-cdk-constructs-0.0.0.jsii.tgz```
+- For python: find the generated .whl file, typically named ```dist/python/cdklabs.generative_ai_cdk_constructs-0.0.0-py3-none-any.whl```
 
 
-### Step 3: Integrating with Sample Application
+### Step 3: Integrating with your application
 
-1. Drag and Drop the TGZ File:
-    - Drag and drop the .tgz file into your samples repository, ideally at the root like "samples/document_explorer".
+There are 2 ways to test your changes locally:
+- Use the [official samples repository](https://github.com/aws-samples/generative-ai-cdk-constructs-samples) which includes a collection of functional use case implementations to demonstrate the usage of AWS Generative AI CDK Constructs. You can modify an existing sample to include your locally build changes.
+- As an alternative, you can also create a new CDK application using:
+    - cdk init app --language typescript for Typescript
+    - cdk init app --language python for Python
 
-2. Modify package.json in Sample Repo:
-    - Open package.json in your samples repository.
-    - Under dependencies, locate the entry for "@cdklabs/generative-ai-cdk-constructs".
-    - Replace the existing entry with file:<path-to-tgz-file>. For example: 
-    ```
-...
-  "dependencies": {
-    "@cdklabs/generative-ai-cdk-constructs": "file:generative-ai-cdk-constructs@0.0.0.jsii.tgz",
-...
-    ```
+Regarless of the method selected, we will call the application consuming your local changes the ```destination application```.
+
+1. Drag and Drop the artifact file into your destination application repository, ideally at the root like "samples/document_explorer".
+
+2. If you use an application which already consumes the generative ai cdk constructs package: 
+- For js:
+    - Open package.json in your destination application
+    - Under dependencies, locate the entry for "@cdklabs/generative-ai-cdk-constructs"
+    - Remove the existing entry and delete the library from your node_modules folder
+- for python:
+    ```pip uninstall cdklabs.generative-ai-cdk-constructs```
+
+3. Install the local artifact:
+- For Js: ```npm i ./generative-ai-cdk-constructs-0.0.0.jsii.tgz```
+- For Python: ```pip install ./cdklabs.generative_ai_cdk_constructs-0.0.0-py3-none-any.whl``` 
 
 ### Step 4: Deploying to AWS
 
-1. Navigate to Sample Repo Directory:
-  - Change directory to your samples repository.
+1. Navigate to your destination application directory:
 2. AWS CDK Deployment:
   - Ensure you are authenticated to AWS with the necessary permissions.
   - Run ```cdk deploy``` to deploy the new backend with your generative AI constructs into the AWS Cloud.

@@ -76,44 +76,18 @@ Good AWS Generative AI CDK Constructs have the following characteristics:
 
 Now it's time to work your magic. Here are some guidelines:
 
-* Coding style (abbreviated):
-  * In general, follow the style of the code around you
-  * 2 space indentation
-  * 120 characters wide
-  * ATX style headings in markdown (e.g. `## H2 heading`)
 * Every change requires a unit test
 * If you change APIs, make sure to update the module's README file
 * Try to maintain a single feature/bugfix per pull request. It's okay to introduce a little bit of housekeeping
    changes along the way, but try to avoid conflating multiple features. Eventually all these are going to go into a
    single commit, so you can use that to frame your scope.
-* If your change introduces a new construct, take a look at the our
-  [example construct]() for an explanation of the L3 patterns we use.
-  Feel free to start your contribution by copy&pasting files from that project,
-  and then edit and rename them as appropriate -
-  it might be easier to get started that way.
+* If your change introduces a new construct, take a look at the structure of our
+  existing constructs to understand what is expected.
 * To ensure CDKv2 compatibility of all the Generative AI Constructs, please ensure the code meets the following guidelines:
   * Import statement for `Construct` is standalone, for example, `import { Construct } from '@aws-cdk/core';` instead of `import { Construct, App, Aws } from '@aws-cdk/core';`
   * Check to make sure the usage of `Construct` in the code is also standalone, for example, `export class IotToSqs extends Construct` insted of `export class IotToSqs extends cdk.Construct`
   * Core classes are imported from `@aws-cdk/core` only, for example, `import { Duration } from "@aws-cdk/core;` instead of `import { Duration } from "@aws-cdk/core/lib/duration";`
   * DO NOT USE deprecated APIs, it will not build in CDKv2, for example, using `statistic?` attribute of [@aws-cdk/aws-cloudwatch.Alarm](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_cloudwatch.Alarm.html) Construct Props will fail to build in CDKv2 
-
-#### Integration Tests
-
-If you are working on a new feature that is using previously unused CloudFormation resource types, or involves
-configuring resource types across services, you need to write integration tests that use these resource types or
-features.
-
-To the extent possible, include a section (like below) in the integration test file that specifies how the successfully
-deployed stack can be verified for correctness. Correctness here implies that the resources have been set up correctly.
-The steps here are usually AWS CLI commands but they need not be.
-
-```ts
-/*
- * Stack verification steps:
- * * <step-1>
- * * <step-2>
- */
-```
 
 ### Step 4: Commit
 
@@ -147,7 +121,7 @@ BREAKING CHANGE: Description of what broke and how to achieve this behavior now
 * Push to a GitHub fork
 * Submit a Pull Requests on GitHub.
 * Please follow the PR checklist written above. We trust our contributors to self-check, and this helps that process!
-* Discuss review comments and iterate until you get at least one “Approve”. When iterating, push new commits to the
+* Discuss review comments and iterate until you get at least two “Approve”. When iterating, push new commits to the
   same branch. Usually all these are going to be squashed when you merge to main. The commit messages should be hints
   for you when you finalize your merge commit message.
 * Make sure to update the PR title/description if things change. The PR title/description are going to be used as the
