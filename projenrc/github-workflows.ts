@@ -174,7 +174,9 @@ export function buildUpdateContributorsWorkflow(project: AwsCdkConstructLibrary)
         uses: 'peter-evans/create-pull-request@v5',
         with: {
           'branch': 'automation/update-contributors',
-          'author': 'emerging-tech-cdk-constructs-bot',
+          'author': 'github-actions <github-actions@github.com>',
+          'committer': 'github-actions <github-actions@github.com>',
+          'signoff': true,
           'commit-message': 'chore: update Contributors File',
           'title': 'chore: update Contributors File',
           'labels': 'auto-approve',

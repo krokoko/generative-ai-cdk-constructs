@@ -1,5 +1,23 @@
 # Contributing Guidelines
 
+## Table of contents
+
+- [Introduction](#introduction)
+- [Reporting Bugs/Feature Requests](#reporting-bugsfeature-requests)
+- [Contributing via Pull Requests](#contributing-via-pull-requests)
+    - [Pull Request Checklist](#pull-request-checklist)
+    - [Step 1: Open an issue](#step-1-open-issue)
+    - [Step 2: Design](#step-2-design)
+    - [Step 3: Work your magic](#step-3-work-your-magic)
+    - [Step 4: Commit](#step-4-commit)
+    - [Step 5: Pull request](#step-5-pull-request)
+    - [Step 6: Merge](#step-6-merge)
+- [Code of conduct](#code-of-conduct)
+- [Security issue notifications](#security-issue-notifications)
+- [Licensing](#licensing)
+
+## Introduction
+
 Thank you for your interest in contributing to our project. Whether it's a bug report, new feature, correction, or additional
 documentation, we greatly value feedback and contributions from our community.
 
@@ -18,7 +36,7 @@ When filing an issue, please check [existing open](https://github.com/awslabs/ge
 * Anything unusual about your environment or deployment
 
 
-## Contributing via Pull  Requests
+## Contributing via Pull Requests
 
 ### Pull Request Checklist
 
@@ -36,7 +54,7 @@ When filing an issue, please check [existing open](https://github.com/awslabs/ge
 
 ---
 
-Projen is opinionated and mandates that all project configuration be done through the .projenrc.ts file. For instance if you directly change package.json then Projen will detect that during the release phase and will fail the release attempt. Hence, it is a good idea to do projen synth by running the projen command on the constructs/ directory where the .projenrc.ts file is before pushing the code to our repository.
+This checklist is automatically added when a new PR is opened. 
 
 ### Step 1: Open Issue
 

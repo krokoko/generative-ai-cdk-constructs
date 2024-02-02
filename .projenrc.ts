@@ -77,7 +77,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
 
   githubOptions: {
     pullRequestLintOptions: {
-      contributorStatement: 'By submitting this pull request, I confirm that you can use, modify, copy, and redistribute this contribution, under the terms of the project license.',
+      contributorStatement: "* [ ] Testing\n- Unit test added (prefer not to modify an existing test, otherwise, it's probably a breaking change)\n- Integration test added (if adding a new pattern or making a significant update to an existing pattern)\n* [ ] Docs\n- __README__: README and/or documentation topic updated\n- __Design__: For significant features, link to the RFC proposal\n* [ ] Title and Description\n- __Change type__: title prefixed with **fix**, **feat** or **chore** and module name in parenthesis, which will appear in changelog\n- __Title__: use lower-case and doesn't end with a period\n- __Breaking?__: last paragraph: \"BREAKING CHANGE: <describe what changed + link for details>\"\n- __Issues__: Indicate issues fixed via: \"**Fixes #xxx**\" or \"**Closes #xxx**\"\n\nBy submitting this pull request, I confirm that you can use, modify, copy, and redistribute this contribution, under the terms of the project license.",
       contributorStatementOptions: {
         exemptUsers: [
           'amazon-auto',
