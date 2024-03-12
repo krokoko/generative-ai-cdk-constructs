@@ -236,6 +236,7 @@
 - [HUGGINGFACE\_LLM\_MIXTRAL\_8X7B\_INSTRUCT\_1\_1\_0](JumpStartModel.md#huggingface_llm_mixtral_8x7b_instruct_1_1_0)
 - [HUGGINGFACE\_LLM\_MIXTRAL\_8X7B\_INSTRUCT\_1\_2\_0](JumpStartModel.md#huggingface_llm_mixtral_8x7b_instruct_1_2_0)
 - [HUGGINGFACE\_LLM\_MIXTRAL\_8X7B\_INSTRUCT\_1\_2\_1](JumpStartModel.md#huggingface_llm_mixtral_8x7b_instruct_1_2_1)
+- [HUGGINGFACE\_LLM\_MIXTRAL\_8X7B\_INSTRUCT\_GPTQ\_1\_0\_0](JumpStartModel.md#huggingface_llm_mixtral_8x7b_instruct_gptq_1_0_0)
 - [HUGGINGFACE\_LLM\_NOUSRESEARCH\_NOUS\_HERMES\_2\_SOLAR\_10\_7B\_1\_0\_0](JumpStartModel.md#huggingface_llm_nousresearch_nous_hermes_2_solar_10_7b_1_0_0)
 - [HUGGINGFACE\_LLM\_NOUSRESEARCH\_NOUS\_HERMES\_2\_SOLAR\_10\_7B\_1\_1\_0](JumpStartModel.md#huggingface_llm_nousresearch_nous_hermes_2_solar_10_7b_1_1_0)
 - [HUGGINGFACE\_LLM\_NOUSRESEARCH\_NOUS\_HERMES\_LLAMA2\_13B\_1\_0\_0](JumpStartModel.md#huggingface_llm_nousresearch_nous_hermes_llama2_13b_1_0_0)
@@ -284,12 +285,17 @@
 - [HUGGINGFACE\_SENTENCESIMILARITY\_BGE\_BASE\_EN\_1\_0\_0](JumpStartModel.md#huggingface_sentencesimilarity_bge_base_en_1_0_0)
 - [HUGGINGFACE\_SENTENCESIMILARITY\_BGE\_BASE\_EN\_1\_0\_1](JumpStartModel.md#huggingface_sentencesimilarity_bge_base_en_1_0_1)
 - [HUGGINGFACE\_SENTENCESIMILARITY\_BGE\_BASE\_EN\_2\_0\_0](JumpStartModel.md#huggingface_sentencesimilarity_bge_base_en_2_0_0)
+- [HUGGINGFACE\_SENTENCESIMILARITY\_BGE\_BASE\_EN\_V1\_5\_1\_0\_0](JumpStartModel.md#huggingface_sentencesimilarity_bge_base_en_v1_5_1_0_0)
 - [HUGGINGFACE\_SENTENCESIMILARITY\_BGE\_LARGE\_EN\_1\_0\_0](JumpStartModel.md#huggingface_sentencesimilarity_bge_large_en_1_0_0)
 - [HUGGINGFACE\_SENTENCESIMILARITY\_BGE\_LARGE\_EN\_1\_0\_1](JumpStartModel.md#huggingface_sentencesimilarity_bge_large_en_1_0_1)
 - [HUGGINGFACE\_SENTENCESIMILARITY\_BGE\_LARGE\_EN\_2\_0\_0](JumpStartModel.md#huggingface_sentencesimilarity_bge_large_en_2_0_0)
+- [HUGGINGFACE\_SENTENCESIMILARITY\_BGE\_LARGE\_EN\_V1\_5\_1\_0\_0](JumpStartModel.md#huggingface_sentencesimilarity_bge_large_en_v1_5_1_0_0)
+- [HUGGINGFACE\_SENTENCESIMILARITY\_BGE\_LARGE\_ZH\_V1\_5\_1\_0\_0](JumpStartModel.md#huggingface_sentencesimilarity_bge_large_zh_v1_5_1_0_0)
+- [HUGGINGFACE\_SENTENCESIMILARITY\_BGE\_M3\_1\_0\_0](JumpStartModel.md#huggingface_sentencesimilarity_bge_m3_1_0_0)
 - [HUGGINGFACE\_SENTENCESIMILARITY\_BGE\_SMALL\_EN\_1\_0\_0](JumpStartModel.md#huggingface_sentencesimilarity_bge_small_en_1_0_0)
 - [HUGGINGFACE\_SENTENCESIMILARITY\_BGE\_SMALL\_EN\_1\_0\_1](JumpStartModel.md#huggingface_sentencesimilarity_bge_small_en_1_0_1)
 - [HUGGINGFACE\_SENTENCESIMILARITY\_BGE\_SMALL\_EN\_2\_0\_0](JumpStartModel.md#huggingface_sentencesimilarity_bge_small_en_2_0_0)
+- [HUGGINGFACE\_SENTENCESIMILARITY\_BGE\_SMALL\_EN\_V1\_5\_1\_0\_0](JumpStartModel.md#huggingface_sentencesimilarity_bge_small_en_v1_5_1_0_0)
 - [HUGGINGFACE\_SENTENCESIMILARITY\_E5\_BASE\_1\_0\_0](JumpStartModel.md#huggingface_sentencesimilarity_e5_base_1_0_0)
 - [HUGGINGFACE\_SENTENCESIMILARITY\_E5\_BASE\_1\_0\_1](JumpStartModel.md#huggingface_sentencesimilarity_e5_base_1_0_1)
 - [HUGGINGFACE\_SENTENCESIMILARITY\_E5\_BASE\_2\_0\_0](JumpStartModel.md#huggingface_sentencesimilarity_e5_base_2_0_0)
@@ -1042,6 +1048,7 @@
 - [HUGGINGFACE\_TRANSLATION\_OPUS\_MT\_EN\_VI\_1\_0\_0](JumpStartModel.md#huggingface_translation_opus_mt_en_vi_1_0_0)
 - [HUGGINGFACE\_TRANSLATION\_OPUS\_MT\_EN\_VI\_1\_1\_0](JumpStartModel.md#huggingface_translation_opus_mt_en_vi_1_1_0)
 - [HUGGINGFACE\_TRANSLATION\_OPUS\_MT\_EN\_VI\_2\_0\_0](JumpStartModel.md#huggingface_translation_opus_mt_en_vi_2_0_0)
+- [HUGGINGFACE\_TRANSLATION\_OPUS\_MT\_MUL\_EN\_1\_0\_0](JumpStartModel.md#huggingface_translation_opus_mt_mul_en_1_0_0)
 - [HUGGINGFACE\_TRANSLATION\_T5\_BASE\_1\_0\_0](JumpStartModel.md#huggingface_translation_t5_base_1_0_0)
 - [HUGGINGFACE\_TRANSLATION\_T5\_BASE\_1\_1\_0](JumpStartModel.md#huggingface_translation_t5_base_1_1_0)
 - [HUGGINGFACE\_TRANSLATION\_T5\_BASE\_2\_0\_0](JumpStartModel.md#huggingface_translation_t5_base_2_0_0)
@@ -1352,6 +1359,10 @@
 - [HUGGINGFACE\_ZSTC\_RECOGNAI\_ZEROSHOT\_SELECTRA\_MEDIUM\_2\_0\_0](JumpStartModel.md#huggingface_zstc_recognai_zeroshot_selectra_medium_2_0_0)
 - [HUGGINGFACE\_ZSTC\_RECOGNAI\_ZEROSHOT\_SELECTRA\_SMALL\_1\_0\_0](JumpStartModel.md#huggingface_zstc_recognai_zeroshot_selectra_small_1_0_0)
 - [HUGGINGFACE\_ZSTC\_RECOGNAI\_ZEROSHOT\_SELECTRA\_SMALL\_2\_0\_0](JumpStartModel.md#huggingface_zstc_recognai_zeroshot_selectra_small_2_0_0)
+- [META\_TEXTGENERATIONNEURON\_LLAMA\_2\_13B\_1\_0\_0](JumpStartModel.md#meta_textgenerationneuron_llama_2_13b_1_0_0)
+- [META\_TEXTGENERATIONNEURON\_LLAMA\_2\_13B\_F\_1\_0\_0](JumpStartModel.md#meta_textgenerationneuron_llama_2_13b_f_1_0_0)
+- [META\_TEXTGENERATIONNEURON\_LLAMA\_2\_7B\_1\_0\_0](JumpStartModel.md#meta_textgenerationneuron_llama_2_7b_1_0_0)
+- [META\_TEXTGENERATIONNEURON\_LLAMA\_2\_7B\_F\_1\_0\_0](JumpStartModel.md#meta_textgenerationneuron_llama_2_7b_f_1_0_0)
 - [META\_TEXTGENERATION\_LLAMA\_2\_13B\_2\_0\_0](JumpStartModel.md#meta_textgeneration_llama_2_13b_2_0_0)
 - [META\_TEXTGENERATION\_LLAMA\_2\_13B\_2\_1\_0](JumpStartModel.md#meta_textgeneration_llama_2_13b_2_1_0)
 - [META\_TEXTGENERATION\_LLAMA\_2\_13B\_2\_1\_1](JumpStartModel.md#meta_textgeneration_llama_2_13b_2_1_1)
@@ -2961,6 +2972,12 @@ ___
 
 ___
 
+### HUGGINGFACE\_LLM\_MIXTRAL\_8X7B\_INSTRUCT\_GPTQ\_1\_0\_0
+
+▪ `Static` `Readonly` **HUGGINGFACE\_LLM\_MIXTRAL\_8X7B\_INSTRUCT\_GPTQ\_1\_0\_0**: [`JumpStartModel`](JumpStartModel.md)
+
+___
+
 ### HUGGINGFACE\_LLM\_NOUSRESEARCH\_NOUS\_HERMES\_2\_SOLAR\_10\_7B\_1\_0\_0
 
 ▪ `Static` `Readonly` **HUGGINGFACE\_LLM\_NOUSRESEARCH\_NOUS\_HERMES\_2\_SOLAR\_10\_7B\_1\_0\_0**: [`JumpStartModel`](JumpStartModel.md)
@@ -3249,6 +3266,12 @@ ___
 
 ___
 
+### HUGGINGFACE\_SENTENCESIMILARITY\_BGE\_BASE\_EN\_V1\_5\_1\_0\_0
+
+▪ `Static` `Readonly` **HUGGINGFACE\_SENTENCESIMILARITY\_BGE\_BASE\_EN\_V1\_5\_1\_0\_0**: [`JumpStartModel`](JumpStartModel.md)
+
+___
+
 ### HUGGINGFACE\_SENTENCESIMILARITY\_BGE\_LARGE\_EN\_1\_0\_0
 
 ▪ `Static` `Readonly` **HUGGINGFACE\_SENTENCESIMILARITY\_BGE\_LARGE\_EN\_1\_0\_0**: [`JumpStartModel`](JumpStartModel.md)
@@ -3267,6 +3290,24 @@ ___
 
 ___
 
+### HUGGINGFACE\_SENTENCESIMILARITY\_BGE\_LARGE\_EN\_V1\_5\_1\_0\_0
+
+▪ `Static` `Readonly` **HUGGINGFACE\_SENTENCESIMILARITY\_BGE\_LARGE\_EN\_V1\_5\_1\_0\_0**: [`JumpStartModel`](JumpStartModel.md)
+
+___
+
+### HUGGINGFACE\_SENTENCESIMILARITY\_BGE\_LARGE\_ZH\_V1\_5\_1\_0\_0
+
+▪ `Static` `Readonly` **HUGGINGFACE\_SENTENCESIMILARITY\_BGE\_LARGE\_ZH\_V1\_5\_1\_0\_0**: [`JumpStartModel`](JumpStartModel.md)
+
+___
+
+### HUGGINGFACE\_SENTENCESIMILARITY\_BGE\_M3\_1\_0\_0
+
+▪ `Static` `Readonly` **HUGGINGFACE\_SENTENCESIMILARITY\_BGE\_M3\_1\_0\_0**: [`JumpStartModel`](JumpStartModel.md)
+
+___
+
 ### HUGGINGFACE\_SENTENCESIMILARITY\_BGE\_SMALL\_EN\_1\_0\_0
 
 ▪ `Static` `Readonly` **HUGGINGFACE\_SENTENCESIMILARITY\_BGE\_SMALL\_EN\_1\_0\_0**: [`JumpStartModel`](JumpStartModel.md)
@@ -3282,6 +3323,12 @@ ___
 ### HUGGINGFACE\_SENTENCESIMILARITY\_BGE\_SMALL\_EN\_2\_0\_0
 
 ▪ `Static` `Readonly` **HUGGINGFACE\_SENTENCESIMILARITY\_BGE\_SMALL\_EN\_2\_0\_0**: [`JumpStartModel`](JumpStartModel.md)
+
+___
+
+### HUGGINGFACE\_SENTENCESIMILARITY\_BGE\_SMALL\_EN\_V1\_5\_1\_0\_0
+
+▪ `Static` `Readonly` **HUGGINGFACE\_SENTENCESIMILARITY\_BGE\_SMALL\_EN\_V1\_5\_1\_0\_0**: [`JumpStartModel`](JumpStartModel.md)
 
 ___
 
@@ -7797,6 +7844,12 @@ ___
 
 ___
 
+### HUGGINGFACE\_TRANSLATION\_OPUS\_MT\_MUL\_EN\_1\_0\_0
+
+▪ `Static` `Readonly` **HUGGINGFACE\_TRANSLATION\_OPUS\_MT\_MUL\_EN\_1\_0\_0**: [`JumpStartModel`](JumpStartModel.md)
+
+___
+
 ### HUGGINGFACE\_TRANSLATION\_T5\_BASE\_1\_0\_0
 
 ▪ `Static` `Readonly` **HUGGINGFACE\_TRANSLATION\_T5\_BASE\_1\_0\_0**: [`JumpStartModel`](JumpStartModel.md)
@@ -9654,6 +9707,30 @@ ___
 ### HUGGINGFACE\_ZSTC\_RECOGNAI\_ZEROSHOT\_SELECTRA\_SMALL\_2\_0\_0
 
 ▪ `Static` `Readonly` **HUGGINGFACE\_ZSTC\_RECOGNAI\_ZEROSHOT\_SELECTRA\_SMALL\_2\_0\_0**: [`JumpStartModel`](JumpStartModel.md)
+
+___
+
+### META\_TEXTGENERATIONNEURON\_LLAMA\_2\_13B\_1\_0\_0
+
+▪ `Static` `Readonly` **META\_TEXTGENERATIONNEURON\_LLAMA\_2\_13B\_1\_0\_0**: [`JumpStartModel`](JumpStartModel.md)
+
+___
+
+### META\_TEXTGENERATIONNEURON\_LLAMA\_2\_13B\_F\_1\_0\_0
+
+▪ `Static` `Readonly` **META\_TEXTGENERATIONNEURON\_LLAMA\_2\_13B\_F\_1\_0\_0**: [`JumpStartModel`](JumpStartModel.md)
+
+___
+
+### META\_TEXTGENERATIONNEURON\_LLAMA\_2\_7B\_1\_0\_0
+
+▪ `Static` `Readonly` **META\_TEXTGENERATIONNEURON\_LLAMA\_2\_7B\_1\_0\_0**: [`JumpStartModel`](JumpStartModel.md)
+
+___
+
+### META\_TEXTGENERATIONNEURON\_LLAMA\_2\_7B\_F\_1\_0\_0
+
+▪ `Static` `Readonly` **META\_TEXTGENERATIONNEURON\_LLAMA\_2\_7B\_F\_1\_0\_0**: [`JumpStartModel`](JumpStartModel.md)
 
 ___
 

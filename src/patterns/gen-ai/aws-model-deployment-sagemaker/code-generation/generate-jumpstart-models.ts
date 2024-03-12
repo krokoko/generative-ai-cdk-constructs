@@ -73,6 +73,7 @@ const ALLOWED_FRAMEWORKS = [
   'huggingface',
   'huggingface-llm',
   'djl-deepspeed',
+  'djl-neuronx',
   'djl-fastertransformer',
   'stabilityai',
 ];
