@@ -164,9 +164,9 @@ describe('RAG Appsync Stepfn Open search construct', () => {
         Targets:
                         [{
                           Arn:
-                                { Ref: Match.stringLikeRegexp('estIngestionStateMachine') },
+                                { Ref: Match.stringLikeRegexp('testeventbridgestepfunctionsstackStateMachine') },
                           Id: 'Target0',
-                          RoleArn: { 'Fn::GetAtt': [Match.stringLikeRegexp('testIngestionStateMachineEvent'), 'Arn'] },
+                          RoleArn: { 'Fn::GetAtt': [Match.stringLikeRegexp('testeventbridgestepfunctionsstackEventsRuleRole'), 'Arn'] },
 
                         }],
       },

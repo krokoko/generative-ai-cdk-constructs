@@ -11,12 +11,12 @@
  *  and limitations under the License.
  */
 import * as path from 'path';
-import { Duration, Aws, Stack } from 'aws-cdk-lib';
+import { EventbridgeToStepfunctions, EventbridgeToStepfunctionsProps } from '@aws-solutions-constructs/aws-eventbridge-stepfunctions';
+import { Duration, Aws } from 'aws-cdk-lib';
 import * as appsync from 'aws-cdk-lib/aws-appsync';
 import * as cognito from 'aws-cdk-lib/aws-cognito';
 import * as ec2 from 'aws-cdk-lib/aws-ec2';
 import * as events from 'aws-cdk-lib/aws-events';
-import * as targets from 'aws-cdk-lib/aws-events-targets';
 import * as iam from 'aws-cdk-lib/aws-iam';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 import * as logs from 'aws-cdk-lib/aws-logs';
@@ -33,7 +33,7 @@ import { ConstructName } from '../../../common/base-class/construct-name-enum';
 import { buildDockerLambdaFunction } from '../../../common/helpers/lambda-builder-helper';
 import * as opensearch_helper from '../../../common/helpers/opensearch-helper';
 import * as s3_bucket_helper from '../../../common/helpers/s3-bucket-helper';
-import { generatePhysicalName, lambdaMemorySizeLimiter } from '../../../common/helpers/utils';
+import { lambdaMemorySizeLimiter } from '../../../common/helpers/utils';
 import * as vpc_helper from '../../../common/helpers/vpc-helper';
 import { DockerLambdaCustomProps } from '../../../common/props/DockerLambdaCustomProps';
 
@@ -833,36 +833,28 @@ export class RagAppsyncStepfnOpensearch extends BaseClass {
     const definition = inputValidationTask.next(validate_input_choice.when(
       stepfn.Condition.booleanEquals('$.validation_result.Payload.isValid', false), jobFailed).otherwise(run_files_in_parallel.next(embeddingsTask)));
 
-    const maxLogGroupNameLength = 255;
-    const logGroupPrefix = '/aws/vendedlogs/states/constructs/';
-    const maxGeneratedNameLength = maxLogGroupNameLength - logGroupPrefix.length;
-    const nameParts: string[] = [
-      Stack.of(scope).stackName, // Name of the stack
-      scope.node.id, // Construct ID
-      'StateMachineLogRag', // Literal string for log group name portion
-    ];
-    const logGroupName = generatePhysicalName(logGroupPrefix, nameParts, maxGeneratedNameLength);
-    const ragLogGroup = new logs.LogGroup(this, 'ingestionStepFunctionLogGroup', {
-      logGroupName: logGroupName,
-    });
-
-    const ingestion_step_function = new stepfn.StateMachine(
-      this,
-      'IngestionStateMachine',
-      {
+    // this construct creates the log group
+    const constructProps: EventbridgeToStepfunctionsProps = {
+      stateMachineProps: {
         stateMachineName: 'IngestionStateMachine'+this.stage,
         definitionBody: stepfn.DefinitionBody.fromChainable(definition),
         timeout: Duration.minutes(30),
-        logs: {
-          destination: ragLogGroup,
-          level: stepfn.LogLevel.ALL,
-        },
         tracingEnabled: this.enablexray,
       },
-    );
+      eventRuleProps: {
+        description: 'Rule to trigger ingestion function',
+        eventBus: this.ingestionBus,
+        eventPattern: {
+          source: ['ingestion'],
+        },
+      },
+      existingEventBusInterface: this.ingestionBus,
+      createCloudWatchAlarms: false,
+    };
 
-    this.stateMachine=ingestion_step_function;
+    const eventbridgeToStepfunctions = new EventbridgeToStepfunctions(this, 'test-eventbridge-stepfunctions-stack', constructProps);
 
+    this.stateMachine=eventbridgeToStepfunctions.stateMachine;
     this.ingestionBus.grantPutEventsTo(event_bridge_datasource.grantPrincipal);
 
     event_bridge_datasource.createResolver(
@@ -894,20 +886,6 @@ export class RagAppsyncStepfnOpensearch extends BaseClass {
         ),
       },
     );
-
-    const rule = new events.Rule(
-      this,
-      'ingestionRule'+this.stage,
-      {
-        description: 'Rule to trigger ingestion function',
-        eventBus: this.ingestionBus,
-        eventPattern: {
-          source: ['ingestion'],
-        },
-      },
-    );
-
-    rule.addTarget(new targets.SfnStateMachine(this.stateMachine));
 
     this.embeddingsLambdaFunction = embeddings_job_function;
     this.fileTransformerLambdaFunction = s3_transformer_job_function;

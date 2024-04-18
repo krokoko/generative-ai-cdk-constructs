@@ -1,6 +1,16 @@
 {
   "dependencies": [
     {
+      "name": "@aws-solutions-constructs/aws-eventbridge-stepfunctions",
+      "version": "2.55.0",
+      "type": "build"
+    },
+    {
+      "name": "@aws-solutions-constructs/core",
+      "version": "2.55.0",
+      "type": "build"
+    },
+    {
       "name": "@commitlint/config-conventional",
       "type": "build"
     },
@@ -123,13 +133,23 @@
     },
     {
       "name": "aws-cdk-lib",
-      "version": "^2.122.0",
+      "version": "^2.135.0",
       "type": "peer"
     },
     {
       "name": "constructs",
       "version": "^10.3.0",
       "type": "peer"
+    },
+    {
+      "name": "@aws-solutions-constructs/aws-eventbridge-stepfunctions",
+      "version": "2.55.0",
+      "type": "runtime"
+    },
+    {
+      "name": "@aws-solutions-constructs/core",
+      "version": "2.55.0",
+      "type": "runtime"
     },
     {
       "name": "cdk-nag",

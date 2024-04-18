@@ -31,7 +31,7 @@ import {
 const GITHUB_USER = 'awslabs';
 const PUBLICATION_NAMESPACE = 'cdklabs';
 const PROJECT_NAME = 'generative-ai-cdk-constructs';
-const CDK_VERSION: string = '2.122.0';
+const CDK_VERSION: string = '2.135.0';
 
 const project = new awscdk.AwsCdkConstructLibrary({
   author: 'Amazon Web Services - Prototyping and Cloud Engineering',
@@ -59,9 +59,13 @@ const project = new awscdk.AwsCdkConstructLibrary({
     'typedoc',
     'typedoc-plugin-markdown',
     'aws-sdk-mock',
+    '@aws-solutions-constructs/core@2.55.0',
+    '@aws-solutions-constructs/aws-eventbridge-stepfunctions@2.55.0',
   ],
   deps: [
     'cdk-nag',
+    '@aws-solutions-constructs/core@2.55.0',
+    '@aws-solutions-constructs/aws-eventbridge-stepfunctions@2.55.0',
   ],
   bundledDeps: [
     'deepmerge',
