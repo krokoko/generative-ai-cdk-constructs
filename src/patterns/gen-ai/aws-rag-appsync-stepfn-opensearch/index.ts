@@ -833,7 +833,6 @@ export class RagAppsyncStepfnOpensearch extends BaseClass {
     const definition = inputValidationTask.next(validate_input_choice.when(
       stepfn.Condition.booleanEquals('$.validation_result.Payload.isValid', false), jobFailed).otherwise(run_files_in_parallel.next(embeddingsTask)));
 
-    // this construct creates the log group
     const constructProps: EventbridgeToStepfunctionsProps = {
       stateMachineProps: {
         stateMachineName: 'IngestionStateMachine'+this.stage,
@@ -852,9 +851,23 @@ export class RagAppsyncStepfnOpensearch extends BaseClass {
       createCloudWatchAlarms: false,
     };
 
+    // this construct creates the log group
     const eventbridgeToStepfunctions = new EventbridgeToStepfunctions(this, 'test-eventbridge-stepfunctions-stack', constructProps);
 
     this.stateMachine=eventbridgeToStepfunctions.stateMachine;
+
+    // https://docs.aws.amazon.com/prescriptive-guidance/latest/logging-monitoring-for-application-owners/logging-best-practices.html
+    NagSuppressions.addResourceSuppressions(
+      this.stateMachine,
+      [
+        {
+          id: 'AwsSolutions-SF1',
+          reason: 'Documentation recommends to log only 400-level (client-side errors) and 500-level (server-side errors) status codes.',
+        },
+      ],
+      true,
+    );
+
     this.ingestionBus.grantPutEventsTo(event_bridge_datasource.grantPrincipal);
 
     event_bridge_datasource.createResolver(
