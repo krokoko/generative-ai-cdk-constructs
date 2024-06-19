@@ -64,6 +64,7 @@ tsconfig.json
 !/.github/workflows/bandit.yml
 !/.github/workflows/commitlint.yml
 !/.github/workflows/code-generation.yml
+!/.github/workflows/trivy-docker-images.yml
 !/.github/dependabot.yml
 !/.projenrc.ts
 !/src/common/props/LangchainProps.ts

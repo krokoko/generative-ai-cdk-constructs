@@ -598,3 +598,57 @@ export function buildCodeGenerationWorkflow(project: AwsCdkConstructLibrary) {
     }
   }
 }
+
+/**
+ * Scan Docker images for vulnerabilities
+ * Uses https://github.com/aquasecurity/trivy-action
+ * @param project AwsCdkConstructLibrary
+ */
+export function buildDockerImagesScanWorkflow(project: AwsCdkConstructLibrary) {
+  const trivy: Job = {
+    permissions: {
+      issues: JobPermission.WRITE,
+      pullRequests: JobPermission.READ,
+    },
+    runsOn: ['ubuntu-latest'],
+    name: 'metrics',
+    steps: [
+      {
+        name: 'Checkout',
+        uses: 'actions/checkout@v4',
+      },
+      {
+        name: 'Build aws-web-crawler-lambda image from Dockerfile',
+        run: [
+          'cd lambda/aws-web-crawler-lambda',
+          'docker build -t aws-web-crawler-lambda:${{ github.sha }} .',
+        ].join('\n'),
+      },
+      {
+        name: 'Run Trivy vulnerability scanner',
+        uses: 'aquasecurity/trivy-action@0.20.0',
+        with: {
+          'image-ref': 'aws-web-crawler-lambda:${{ github.sha }}',
+          'format': 'table',
+          'exit-code': '1',
+          'ignore-unfixed': true,
+          'vuln-type': 'os,library',
+          'severity': 'CRITICAL,HIGH'
+        }
+      }
+    ],
+  };
+
+  if (project.github) {
+    const workflow = project.github.addWorkflow('trivy-docker-images');
+    if (workflow) {
+      workflow.on({
+        pullRequest: {},
+        push: {},
+      });
+      workflow.addJobs({
+        trivy: trivy,
+      });
+    }
+  }
+}

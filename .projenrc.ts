@@ -24,6 +24,7 @@ import {
   runBanditWorkflow,
   runCommitLintWorkflow,
   buildCodeGenerationWorkflow,
+  buildDockerImagesScanWorkflow
 } from './projenrc/github-workflows';
 
 // Constants
@@ -125,6 +126,7 @@ runSemGrepWorkflow(project);
 runBanditWorkflow(project);
 runCommitLintWorkflow(project);
 buildCodeGenerationWorkflow(project);
+buildDockerImagesScanWorkflow(project);
 
 const workflowUpgradeMain = project.github?.tryFindWorkflow('upgrade-main');
 if (workflowUpgradeMain) {
@@ -157,6 +159,7 @@ project.github?.actions.set('peter-evans/create-issue-from-file@v4', 'peter-evan
 project.github?.actions.set('peter-evans/create-pull-request@v4', 'peter-evans/create-pull-request@38e0b6e68b4c852a5500a94740f0e535e0d7ba54');
 project.github?.actions.set('peter-evans/create-pull-request@v5', 'peter-evans/create-pull-request@153407881ec5c347639a548ade7d8ad1d6740e38');
 project.github?.actions.set('aws-actions/configure-aws-credentials@v4.0.2', 'aws-actions/configure-aws-credentials@e3dd6a429d7300a6a4c196c26e071d42e0343502');
+project.github?.actions.set('aquasecurity/trivy-action@0.23.0', 'aquasecurity/trivy-action@7c2007bcb556501da015201bcba5aa14069b74e2'); //https://github.com/aquasecurity/trivy-action/releases/tag/0.23.0
 
 // We don't want to package certain things
 project.npmignore?.addPatterns(
