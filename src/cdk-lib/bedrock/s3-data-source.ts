@@ -207,7 +207,9 @@ function vectorIngestionConfiguration(
       },
     };
 
-  } else if (chunkingStrategy === ChunkingStrategy.NONE) {
+  } else if (chunkingStrategy === ChunkingStrategy.NONE ||
+    chunkingStrategy === ChunkingStrategy.HIERARCHICAL ||
+    chunkingStrategy === ChunkingStrategy.SEMANTIC) {
 
     return {
       chunkingConfiguration: {
