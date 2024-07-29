@@ -42,6 +42,17 @@ export enum ChunkingStrategy {
    */
   DEFAULT = 'DEFAULT',
   /**
+   * Split documents into layers of chunks where the first layer contains
+   * large chunks, and the second layer contains smaller chunks derived from
+   * the first layer.
+   */
+  HIERARCHICAL = 'HIERARCHICAL',
+  /**
+   * Split documents into chunks based on groups of similar content derived
+   * with natural language processing.
+   */
+  SEMANTIC = 'SEMANTIC',
+  /**
    * Amazon Bedrock treats each file as one chunk. If you choose this option,
    * you may want to pre-process your documents by splitting them into separate
    * files.
