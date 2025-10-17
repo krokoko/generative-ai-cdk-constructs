@@ -1,0 +1,11 @@
+import { Construct } from 'constructs';
+import * as cdk from 'aws-cdk-lib';
+import * as genaicdk from '@cdklabs/generative-ai-cdk-constructs';
+
+class MyStack extends cdk.Stack {
+  constructor(scope: Construct, id: string) {
+    super(scope, id);
+
+    /// here
+  }
+}

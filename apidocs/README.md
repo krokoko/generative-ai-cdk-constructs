@@ -7,6 +7,7 @@
 ## Namespaces
 
 - [amazonaurora](@cdklabs/namespaces/amazonaurora/README.md)
+- [amazonconnect](@cdklabs/namespaces/amazonconnect/README.md)
 - [aosscwdashboard](@cdklabs/namespaces/aosscwdashboard/README.md)
 - [auroraDsql](@cdklabs/namespaces/auroraDsql/README.md)
 - [bda](@cdklabs/namespaces/bda/README.md)
