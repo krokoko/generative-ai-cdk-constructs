@@ -26,6 +26,8 @@ Amazon Connect is a contact center as a service (CCaaS) solution that offers eas
 
 This construct library facilitates the deployment of Amazon Connect resources through a higher level, L2 set of constructs. It leverages underlying CloudFormation L1 resources to provision these Connect features.
 
+For additional information about Amazon Connect, please refer to the [get started with Amazon Connect](https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-get-started.html) guide.
+
 ## Table of Contents
 
 - [Instance](#instance)

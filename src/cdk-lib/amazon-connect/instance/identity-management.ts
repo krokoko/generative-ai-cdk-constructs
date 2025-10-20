@@ -20,14 +20,12 @@ import { validateFieldPattern, validateStringFieldLength } from '../validation-h
  * Minimum length for instance alias
  * @internal
  */
-
 const INSTANCE_ALIAS_MIN_LENGTH = 1;
 /**
  * Maximum length for instance alias
  * @internal
  */
 const INSTANCE_ALIAS_MAX_LENGTH = 45;
-
 /**
  * Length for directory id
  * @internal
