@@ -16,3 +16,48 @@
 // ===================================
 export * from './instance/instance';
 export * from './instance/identity-management';
+
+// ===================================
+// Hours of Operation
+// ===================================
+export * from './hours-of-operation/hours-of-operation';
+
+// ===================================
+// Security Profile
+// ===================================
+export * from './security-profile/security-profile';
+
+// ===================================
+// Queue
+// ===================================
+export * from './queue/queue';
+
+// ===================================
+// Routing Profile
+// ===================================
+export * from './routing-profile/routing-profile';
+
+// ===================================
+// User Hierarchy Group
+// ===================================
+export * from './user-hierarchy-group/user-hierarchy-group';
+
+// ===================================
+// Contact Flow
+// ===================================
+export * from './contact-flow/contact-flow';
+
+// ===================================
+// Phone Number
+// ===================================
+export * from './phone-number/phone-number';
+
+// ===================================
+// Quick Connect
+// ===================================
+export * from './quick-connect/quick-connect';
+
+// ===================================
+// User
+// ===================================
+export * from './user/user';
