@@ -70,6 +70,7 @@ interface ModelsData {
 const JUMPSTART_CACHE_PATH = path.join(__dirname, './.cache/jumpstart-models-cache.json');
 const JUMPSTART_MODEL_PATH = path.join(__dirname, '../jumpstart-model.ts');
 const JUMPSTART_MODELS_PATH = path.join(__dirname, '../jumpstart-models.json');
+const JUMPSTART_MODEL_CONSTANTS_PATH = path.join(__dirname, '../jumpstart-model-constants.ts');
 
 const ALLOWED_FRAMEWORKS = [
   'huggingface',
@@ -176,7 +177,7 @@ function generateCode() {
 
   const data = JSON.parse(fs.readFileSync(JUMPSTART_CACHE_PATH, 'utf8'));
 
-  let modelsStr = '';
+  let constantsStr = '';
   let specs: Record<string, any> = {};
 
   for (const modelId of Object.keys(data)) {
@@ -244,10 +245,12 @@ function generateCode() {
       }
 
       specs[modelName] = spec;
-      modelsStr += '  ' + `public static readonly ${modelName} = this.of('${modelName}');\n`;
+      // Generate constants instead of static readonly properties to avoid Java 64KB limit
+      constantsStr += '  ' + `public static readonly ${modelName} = '${modelName}';\n`;
     }
   }
 
+  // Generate the main model class file (without static readonly properties)
   const fileStr = `/**
  *  Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
@@ -291,8 +294,6 @@ export interface IJumpStartModelSpec {
 }
 
 export class JumpStartModel {
-${modelsStr}
-
   public static of(name: string): JumpStartModel {
     return new JumpStartModel(name);
   }
@@ -309,9 +310,37 @@ ${modelsStr}
   }
 }`;
 
+  // Generate the constants file for type-safe model name access
+  const constantsFileStr = `/**
+ *  Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ *
+ *  Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance
+ *  with the License. A copy of the License is located at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  or in the 'license' file accompanying this file. This file is distributed on an 'AS IS' BASIS, WITHOUT WARRANTIES
+ *  OR CONDITIONS OF ANY KIND, express or implied. See the License for the specific language governing permissions
+ *  and limitations under the License.
+ *
+ *  This file contains string constants for all available JumpStart model names.
+ *  Use these constants with JumpStartModel.of() for type-safe model access.
+ *
+ *  Example:
+ *    import { JumpStartModel } from './jumpstart-model';
+ *    import { JumpStartModelConstants } from './jumpstart-model-constants';
+ *
+ *    const model = JumpStartModel.of(JumpStartModelConstants.META_TEXTGENERATION_LLAMA_2_7B_F_2_0_2);
+ */
+
+export class JumpStartModelConstants {
+${constantsStr}
+}`;
+
   GenerateUtils.writeFileSyncWithDirs(
     JUMPSTART_MODELS_PATH,
     JSON.stringify(zlib.deflateRawSync(JSON.stringify(specs)).toJSON()),
   );
   GenerateUtils.writeFileSyncWithDirs(JUMPSTART_MODEL_PATH, fileStr);
+  GenerateUtils.writeFileSyncWithDirs(JUMPSTART_MODEL_CONSTANTS_PATH, constantsFileStr);
 }

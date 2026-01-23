@@ -24,6 +24,7 @@ Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 - [DeepLearningContainerImage](classes/DeepLearningContainerImage.md)
 - [HuggingFaceSageMakerEndpoint](classes/HuggingFaceSageMakerEndpoint.md)
 - [JumpStartModel](classes/JumpStartModel.md)
+- [JumpStartModelConstants](classes/JumpStartModelConstants.md)
 - [JumpStartSageMakerEndpoint](classes/JumpStartSageMakerEndpoint.md)
 - [SageMakerEndpointBase](classes/SageMakerEndpointBase.md)
 - [SageMakerInstanceType](classes/SageMakerInstanceType.md)

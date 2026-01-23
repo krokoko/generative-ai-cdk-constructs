@@ -49,7 +49,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   description:
     'AWS Generative AI CDK Constructs is a library for well-architected generative AI patterns.',
   cdkVersion: CDK_VERSION,
-  projenVersion: '~0.98.26',
+  projenVersion: '~0.99.7',
   constructsVersion: '10.3.0',
   defaultReleaseBranch: 'main',
   jsiiVersion: '~5.9.0',
@@ -97,12 +97,11 @@ const project = new awscdk.AwsCdkConstructLibrary({
   },
 
   // TODO: JumpStartModel.java is over 64K skipping building Java distribution until resolved.
-  // publishToMaven: {
-  //   javaPackage: `io.github.${PUBLICATION_NAMESPACE.replace(/-/g, '_')}.${PROJECT_NAME.replace(/-/g, '_')}`,
-  //   mavenGroupId: `io.github.${PUBLICATION_NAMESPACE}`,
-  //   mavenArtifactId: PROJECT_NAME,
-  //   mavenEndpoint: 'https://s01.oss.sonatype.org',
-  // },
+  publishToMaven: {
+    javaPackage: `io.github.${PUBLICATION_NAMESPACE.replace(/-/g, '_')}.${PROJECT_NAME.replace(/-/g, '_')}`,
+    mavenGroupId: `io.github.${PUBLICATION_NAMESPACE}`,
+    mavenArtifactId: PROJECT_NAME,
+  },
 
   publishToGo: {
     moduleName: `github.com/${PUBLICATION_NAMESPACE}/${PROJECT_NAME}-go`,

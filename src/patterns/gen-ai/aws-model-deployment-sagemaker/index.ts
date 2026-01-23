@@ -16,6 +16,7 @@ export * from './huggingface-sagemaker-endpoint';
 export * from './jumpstart-sagemaker-endpoint';
 export * from './sagemaker-instance-type';
 export * from './jumpstart-model';
+export * from './jumpstart-model-constants';
 export * from './container-image';
 export * from './deep-learning-container-image';
 export * from './custom-sagemaker-endpoint';

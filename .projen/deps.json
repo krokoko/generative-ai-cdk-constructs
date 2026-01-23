@@ -125,7 +125,7 @@
     },
     {
       "name": "projen",
-      "version": "~0.98.26",
+      "version": "~0.99.7",
       "type": "build"
     },
     {
